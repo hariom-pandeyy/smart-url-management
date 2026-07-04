@@ -1,0 +1,22 @@
+.stats-card{
+    background:#1E293B;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    padding:24px;
+    color:white;
+    transition:.25s;
+}
+
+.stats-card:hover{
+    transform:translateY(-4px);
+    border-color:#7C3AED;
+}
+
+.stats-card p{
+    color:#94A3B8;
+    margin-bottom:12px;
+}
+
+.stats-card h2{
+    font-size:34px;
+}
