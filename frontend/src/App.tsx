@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Analytics from "./pages/Analytics/Analytics";
 import Links from "./pages/Links/Links";
@@ -10,9 +11,7 @@ import Settings from "./pages/Settings/settings";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 
-function Register() {
-  return <h1>Register Page</h1>;
-}
+
 
 
 

@@ -42,6 +42,19 @@ const handleLogin = async (e: React.FormEvent) => {
   onChange={(e) => setPassword(e.target.value)}
 />
           <button type="submit">Login</button>
+          <p style={{ marginTop: "16px", textAlign: "center" }}>
+  Don't have an account?{" "}
+  <span
+    onClick={() => navigate("/register")}
+    style={{
+      color: "#8b5cf6",
+      cursor: "pointer",
+      fontWeight: "bold",
+    }}
+  >
+    Register
+  </span>
+</p>
         </form>
       </div>
     </div>
