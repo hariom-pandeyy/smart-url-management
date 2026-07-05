@@ -199,11 +199,16 @@ const RecentLinks = ({ links, onDelete }: Props) => {
                     <button
                       className="icon-btn"
                       title="View QR"
-                      onClick={() =>
-                        window.open(
-                         (link.qr_code, "_blank")
-                        )
-                      }
+                     onClick={() => {
+  if (link.qr_code?.startsWith("data:image")) {
+    window.open(link.qr_code, "_blank");
+  } else {
+    window.open(
+      `https://smart-url-management.onrender.com${link.qr_code}`,
+      "_blank"
+    );
+  }
+}}
                     >
                       <QrCode size={18} />
                     </button>

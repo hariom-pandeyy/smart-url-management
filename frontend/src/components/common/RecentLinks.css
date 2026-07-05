@@ -365,3 +365,11 @@ tbody td{
   font-size: 13px;
   font-weight: 600;
 }
+
+.expiry-active,
+.expiry-never,
+.expiry-expired {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+}
