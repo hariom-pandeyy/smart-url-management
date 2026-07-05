@@ -182,7 +182,7 @@ const RecentLinks = ({ links, onDelete }: Props) => {
                     title="Copy Link"
                     onClick={() => {
                       navigator.clipboard.writeText(
-                        `http://localhost:5000/api/url/${link.short_code}`
+                        `https://smart-url-management.onrender.com/api/url/${link.short_code}`
                       );
                       alert("Copied!");
                     }}
@@ -196,7 +196,7 @@ const RecentLinks = ({ links, onDelete }: Props) => {
                       title="View QR"
                       onClick={() =>
                         window.open(
-                          `http://localhost:5000${link.qr_code}`,
+                          `https://smart-url-management.onrender.com${link.qr_code}`,
                           "_blank"
                         )
                       }

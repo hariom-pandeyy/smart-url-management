@@ -28,7 +28,7 @@ export const createShortUrl = async (
 
     let shortCode = custom_alias || generateShortCode();
     const metadata = await fetchUrlMetadata(original_url);
-    const baseUrl = process.env.BASE_URL || "http://localhost:5000";
+    const baseUrl = process.env.BASE_URL || "https://smart-url-management.onrender.com";
     const qrCodePath = await generateQRCode(shortCode, baseUrl);
     const passwordHash = password
   ? await hashPassword(password)
