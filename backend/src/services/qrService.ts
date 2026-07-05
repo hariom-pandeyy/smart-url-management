@@ -12,9 +12,9 @@ export const generateQRCode = async (
       `${shortCode}.png`
     );
 
-    const url =  `https://smart-url-management.vercel.app/${shortCode}`;
+   const url = `https://smart-url-management.vercel.app/${shortCode}`;
 
-    await QRCode.toFile(qrPath, url);
+const qrCode = await QRCode.toDataURL(url);
 
     return `/qr/${shortCode}.png`;
   } catch (error) {

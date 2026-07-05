@@ -201,8 +201,7 @@ const RecentLinks = ({ links, onDelete }: Props) => {
                       title="View QR"
                       onClick={() =>
                         window.open(
-                          `https://smart-url-management.onrender.com${link.qr_code}`,
-                          "_blank"
+                         (link.qr_code, "_blank")
                         )
                       }
                     >

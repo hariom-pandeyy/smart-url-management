@@ -7,6 +7,7 @@ import { fetchUrlMetadata } from "../services/metadataService";
 import { hashPassword } from "../utils/hash";
 import { comparePassword } from "../utils/hash";
 import { generateQRCode } from "../services/qrService";
+import QRCode from "qrcode";
 export const createShortUrl = async (
   req: AuthRequest,
   res: Response
@@ -28,8 +29,10 @@ export const createShortUrl = async (
 
     let shortCode = custom_alias || generateShortCode();
     const metadata = await fetchUrlMetadata(original_url);
-    const baseUrl = process.env.BASE_URL || "https://smart-url-management.onrender.com";
-    const qrCodePath = await generateQRCode(shortCode, baseUrl);
+    const frontendUrl = "https://smart-url-management.vercel.app";
+const qrCodeDataUrl = await QRCode.toDataURL(
+  `${frontendUrl}/${shortCode}`
+);
     const passwordHash = password
   ? await hashPassword(password)
   : null;
@@ -73,7 +76,7 @@ export const createShortUrl = async (
   metadata.image,
   passwordHash,
   max_clicks || null,
-  qrCodePath
+ qrCodeDataUrl
 ]
     );
 
