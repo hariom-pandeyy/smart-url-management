@@ -9,6 +9,8 @@ import AnalyticsOverview from "./pages/Analytics/AnalyticsOverview";
 import Profile from "./pages/Profile/Profile";
 import Settings from "./pages/Settings/settings";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import RedirectPage from "./pages/Redirect/RedirectPage";
+
 
 
 
@@ -24,13 +26,15 @@ function App() {
   <Route path="/login" element={<Login />} />
   <Route path="/register" element={<Register />} />
 
-  //<Route element={<ProtectedRoute />}>
+  <Route element={<ProtectedRoute />}>
+  <Route path="/:shortCode" element={<RedirectPage />} />
     <Route path="/dashboard" element={<Dashboard />} />
     <Route path="/links" element={<Links />} />
     <Route path="/analytics" element={<AnalyticsOverview />} />
     <Route path="/analytics/:id" element={<Analytics />} />
     <Route path="/profile" element={<Profile />} />
     <Route path="/settings" element={<Settings />} />
+    <Route path="/:shortCode" element={<RedirectPage />} />
   </Route>
 </Routes>
     </BrowserRouter>

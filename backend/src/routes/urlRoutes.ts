@@ -3,9 +3,10 @@ import {
   createShortUrl,
   redirectUrl,
   verifyPassword,
+  getUrlInfo,
   getAnalytics,
   getMyLinks,
-    deleteLink,
+  deleteLink,
 } from "../controllers/urlController";
 import { authenticateUser } from "../middleware/authMiddleware";
 
@@ -14,6 +15,7 @@ const router = express.Router();
 
 router.post("/create", authenticateUser, createShortUrl);
 router.get("/my-links", authenticateUser, getMyLinks);
+router.get("/info/:shortCode", getUrlInfo);
 router.post("/verify-password", verifyPassword);
 router.get("/:id/analytics", authenticateUser, getAnalytics);
 router.get("/:shortCode", redirectUrl);

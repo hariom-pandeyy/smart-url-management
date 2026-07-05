@@ -12,7 +12,7 @@ export const generateQRCode = async (
       `${shortCode}.png`
     );
 
-    const url = `${baseUrl}/api/url/${shortCode}`;
+    const url =  `https://smart-url-management.vercel.app/${shortCode}`;
 
     await QRCode.toFile(qrPath, url);
 

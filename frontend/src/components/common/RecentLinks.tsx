@@ -182,7 +182,7 @@ const RecentLinks = ({ links, onDelete }: Props) => {
                     title="Copy Link"
                     onClick={() => {
                       navigator.clipboard.writeText(
-                        `https://smart-url-management.onrender.com/api/url/${link.short_code}`
+                          `https://smart-url-management.vercel.app/${link.short_code}`
                       );
                       alert("Copied!");
                     }}

@@ -173,6 +173,44 @@ await pool.query(
   }
 };
 
+export const getUrlInfo = async (req: Request, res: Response) => {
+  try {
+    const { shortCode } = req.params;
+
+    const result = await pool.query(
+      `SELECT id, original_url, short_code, password_hash, expires_at, max_clicks, click_count, is_active
+       FROM urls
+       WHERE short_code = $1`,
+      [shortCode]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({ message: "Short URL not found" });
+    }
+
+    const url = result.rows[0];
+
+    if (!url.is_active) {
+      return res.status(403).json({ message: "This link is inactive" });
+    }
+
+    if (url.expires_at && new Date() > new Date(url.expires_at)) {
+      return res.status(410).json({ message: "This link has expired" });
+    }
+
+    if (url.max_clicks && url.click_count >= url.max_clicks) {
+      return res.status(403).json({ message: "Maximum click limit reached" });
+    }
+
+    return res.status(200).json({
+      shortCode: url.short_code,
+      passwordRequired: !!url.password_hash,
+      original_url: url.password_hash ? null : url.original_url,
+    });
+  } catch {
+    return res.status(500).json({ message: "Failed to fetch link info" });
+  }
+};
 export const verifyPassword = async (req: Request, res: Response) => {
   try {
     const { shortCode, password } = req.body;
