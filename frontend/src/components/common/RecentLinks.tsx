@@ -199,15 +199,32 @@ const RecentLinks = ({ links, onDelete }: Props) => {
                     <button
                       className="icon-btn"
                       title="View QR"
-                     onClick={() => {
+                   onClick={() => {
   if (link.qr_code?.startsWith("data:image")) {
-    window.open(link.qr_code, "_blank");
-  } else {
-    window.open(
-      `https://smart-url-management.onrender.com${link.qr_code}`,
-      "_blank"
-    );
+    const qrWindow = window.open("", "_blank");
+
+    qrWindow?.document.write(`
+      <html>
+        <body style="
+          margin:0;
+          min-height:100vh;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          background:#0f172a;
+        ">
+          <img src="${link.qr_code}" style="width:320px;height:320px;" />
+        </body>
+      </html>
+    `);
+
+    return;
   }
+
+  window.open(
+    `https://smart-url-management.onrender.com${link.qr_code}`,
+    "_blank"
+  );
 }}
                     >
                       <QrCode size={18} />
