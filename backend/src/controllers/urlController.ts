@@ -245,6 +245,31 @@ export const verifyPassword = async (req: Request, res: Response) => {
       });
     }
 
+    const parser = new UAParser(req.headers["user-agent"]);
+
+const browser = parser.getBrowser().name || "Unknown";
+const operatingSystem = parser.getOS().name || "Unknown";
+const device = parser.getDevice().type || "Desktop";
+
+const ipAddress =
+  req.ip || req.socket.remoteAddress || "Unknown";
+
+const referrer = req.headers.referer || "Direct";
+
+await pool.query(
+  `UPDATE urls
+   SET click_count = click_count + 1
+   WHERE id = $1`,
+  [url.id]
+);
+
+await pool.query(
+  `INSERT INTO click_logs
+   (url_id, ip_address, browser, operating_system, device_type, referrer)
+   VALUES ($1, $2, $3, $4, $5, $6)`,
+  [url.id, ipAddress, browser, operatingSystem, device, referrer]
+);
+
     return res.status(200).json({
       message: "Password verified",
       original_url: url.original_url,

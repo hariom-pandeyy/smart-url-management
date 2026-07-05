@@ -21,7 +21,7 @@ const RedirectPage = () => {
           return;
         }
 
-        window.location.href = res.data.original_url;
+        window.location.href = `${API_URL}/api/url/${shortCode}`;
       } catch (error: any) {
         setMessage(error.response?.data?.message || "Link unavailable");
       }
