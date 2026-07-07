@@ -1,4 +1,19 @@
+<div align="center">
+
 # 🚀 SmartURL – Intelligent URL Management Platform
+
+A production-grade Smart URL Management Platform built with React, TypeScript, Node.js, Express, PostgreSQL, and JWT Authentication.
+
+![React](https://img.shields.io/badge/React-19-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Node.js](https://img.shields.io/badge/Node.js-22-green?logo=node.js)
+![Express](https://img.shields.io/badge/Express.js-black?logo=express)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-blue?logo=postgresql)
+![JWT](https://img.shields.io/badge/JWT-Authentication-purple)
+![Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)
+![Render](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render)
+
+</div>
 
 > A production-grade Smart URL Management Platform built with React, TypeScript, Node.js, Express, PostgreSQL, and JWT Authentication.
 
@@ -6,9 +21,23 @@ Create secure, trackable, and intelligent short links with advanced analytics, Q
 
 ---
 
-# 📸 Screenshots
+## 📸 Screenshots
 
-> Add screenshots here
+### Dashboard
+
+![Dashboard](assets/dashboard.png)
+
+### Analytics
+
+![Analytics](assets/analytics.png)
+
+### Create Link
+
+![Create Link](assets/create-link.png)
+
+### Password Protected Link
+
+![Password](assets/password.png)
 
 - Dashboard
 - Links Page
